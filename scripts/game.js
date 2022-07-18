@@ -1,9 +1,15 @@
-    const scoreDisplay = document.getElementById('score')
-    const canvas = document.getElementById('myCanvas')
-    const ctx = canvas.getContext('2d')
-    const width = 28
-    /* let score = 0
-    const layout = [
+class Game {
+    constructor(ctx, width, height, player){
+        this.frames = 0;
+        this.ctx = ctx;
+        this.width = width;
+        this.height = height;
+        this.player = player;
+        this.obstacles = [];
+        this.interval = null;
+        this.isRunning = false;
+        this.squares = [];
+        this.layout = [
       1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
       1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
       1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
@@ -33,70 +39,45 @@
       1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
       1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
     ]
+        
+}
 
+start = () => {
+    this.drawGameBoard()
+    this.interval = setInterval(this.updateGameArea, 20)
+    this.isRunning = true;
+}
 
-const squares = []
+clear(){
+    this.ctx.clearRect(0, 0, this.width, this.height)
+}
 
-function createBoard() {
-    for (let i = 0; i < layout.length; i++) {
-      //add layout to the board
-      if(layout[i] === 0) {
-        squares.push({x: (0 + i * 20) % 560 , y: Math.floor(i/28) * 20, color: 'blue', type: 'cheese'} )
-      } else if (layout[i] === 1) {
-        squares.push({x: (0 + i * 20) % 560 , y: Math.floor(i/28) * 20, color: 'black', type: 'wall'} )
-      } else if (layout[i] === 2) {
-        squares.push({x: (0 + i * 20) % 560 , y: Math.floor(i/28) * 20, color: 'red', type: 'cat-lair'} )
-      } else if (layout[i] === 3) {
-        squares.push({x: (0 + i * 20) % 560 , y: Math.floor(i/28) * 20, color: 'yellow', type: 'powerup'} )
+    stop() {
+        clearInterval(this.interval);
+        this.isRunning = false;
+    }
+
+drawGameBoard() {
+    const createBoard = () => {
+    for (let i = 0; i < this.layout.length; i++) {
+      if(this.layout[i] === 0) {
+        this.squares.push({x: (0 + i * 20) % 560 , y: Math.floor(i/28) * 20, color: 'blue', type: 'cheese'} )
+      } else if (this.layout[i] === 1) {
+        this.squares.push({x: (0 + i * 20) % 560 , y: Math.floor(i/28) * 20, color: 'black', type: 'wall'} )
+      } else if (this.layout[i] === 2) {
+        this.squares.push({x: (0 + i * 20) % 560 , y: Math.floor(i/28) * 20, color: 'red', type: 'cat-lair'} )
+      } else if (this.layout[i] === 3) {
+        this.squares.push({x: (0 + i * 20) % 560 , y: Math.floor(i/28) * 20, color: 'yellow', type: 'powerup'} )
       }
     }
   }
   createBoard()
-
-console.log(squares)    
-squares.forEach((square) => {
+this.squares.forEach((square) => {
   ctx.fillStyle = square.color
   ctx.fillRect(square.x, square.y, 20, 20)
 })
- */
-const player = new Component(20, 20, 'white', 270, 340, ctx);
-
-let game = new Game(ctx, width, canvas.height, player)
-game.start()
-
-const startBtn = document.getElementById('start');
-
-startBtn.addEventListener('click', () => {
-    if (!game) {
-    game = new Game(ctx, cWidth,cHeight, player);
-    game.start();
-    } else if (game && !game.isRunning) {
-        //When crashed
-        game.reset();
-    }
-});
-
-
-
-document.addEventListener('keydown', (e) =>{
-    switch(e.code) {
-        case 'ArrowUp':
-            player.speedY -= 1;
-            break;
-        case 'ArrowDown':
-            player.speedY += 1;
-            break;
-        case 'ArrowLeft':
-            player.speedX -= 1;
-            break;
-        case 'ArrowRight':
-            player.speedX += 1;
-            break;
-        
-    }
-});
-
-document.addEventListener('keyup', () => {
-    player.speedX = 0;
-    player.speedY = 0;
-});
+}
+updateGameArea = () => {
+    this.player.draw()
+}
+}
