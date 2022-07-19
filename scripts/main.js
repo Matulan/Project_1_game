@@ -59,16 +59,17 @@ squares.forEach((square) => {
   ctx.fillRect(square.x, square.y, 20, 20)
 })
  */
-const player = new Component(20, 20, 'white', 270, 340, ctx);
+const player = new Component(20, 20, 'white', 260, 340, ctx);
 
-let game = new Game(ctx, width, canvas.height, player)
-game.start()
+/* let game = new Game(ctx, canvas.width, canvas.height, player)
+game.start() */
 
+let game;
 const startBtn = document.getElementById('start');
 
 startBtn.addEventListener('click', () => {
     if (!game) {
-    game = new Game(ctx, cWidth,cHeight, player);
+    game = new Game(ctx, canvas.width, canvas.height, player);
     game.start();
     } else if (game && !game.isRunning) {
         //When crashed
@@ -76,25 +77,33 @@ startBtn.addEventListener('click', () => {
     }
 });
 
-
-
 document.addEventListener('keydown', (e) =>{
     switch(e.code) {
         case 'ArrowUp':
-            player.speedY -= 1;
+          if(!(player.checkPath(game.squares, 'up'))) {
+            player.y -= 20;
+          }
             break;
         case 'ArrowDown':
-            player.speedY += 1;
+          if(!(player.checkPath(game.squares, 'down'))) {
+            player.y += 20;
+          }
             break;
         case 'ArrowLeft':
-            player.speedX -= 1;
+          if(!(player.checkPath(game.squares, 'left'))) {
+            player.x -= 20;
+          }
             break;
         case 'ArrowRight':
-            player.speedX += 1;
+          if(!(player.checkPath(game.squares, 'right'))) {
+            player.x += 20;
+          }
             break;
         
     }
 });
+
+
 
 document.addEventListener('keyup', () => {
     player.speedX = 0;
