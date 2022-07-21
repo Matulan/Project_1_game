@@ -1,100 +1,121 @@
 class Game {
-    constructor(ctx, width, height, player){
-        this.frames = 0;
-        this.ctx = ctx;
-        this.width = width;
-        this.height = height;
-        this.player = player;
-        this.obstacles = [];
-        this.pulps = [];
-        this.interval = null;
-        this.isRunning = false;
-        this.squares = [];
-        this.score = 0;
-        this.layout = [
-      1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-      1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
-      1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
-      1,3,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,3,1,
-      1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
-      1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-      1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,0,1,
-      1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,0,1,
-      1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,
-      1,1,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,1,1,
-      1,1,1,1,1,1,0,1,1,0,0,0,0,0,0,0,0,0,0,1,1,0,1,1,1,1,1,1,
-      1,1,1,1,1,1,0,1,1,0,1,1,1,2,2,1,1,1,0,1,1,0,1,1,1,1,1,1,
-      1,1,1,1,1,1,0,1,1,0,1,2,2,2,2,2,2,1,0,1,1,0,1,1,1,1,1,1,
-      1,1,1,1,1,1,0,0,0,0,1,2,2,2,2,2,2,1,0,0,0,0,1,1,1,1,1,1,
-      1,1,1,1,1,1,0,1,1,0,1,2,2,2,2,2,2,1,0,1,1,0,1,1,1,1,1,1,
-      1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,
-      1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,
-      1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-      1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
-      1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1,
-      1,3,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,3,1,
-      1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,0,1,1,1,
-      1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0,1,1,0,1,1,1,
-      1,0,0,0,0,0,0,1,1,0,0,0,0,1,1,0,0,0,0,1,1,0,0,0,0,0,0,1,
-      1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,
-      1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,
-      1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
-      1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
-    ]
-        
-}
+  constructor(ctx, width, height, player) {
+    this.frames = 0;
+    this.ctx = ctx;
+    this.width = width;
+    this.height = height;
+    this.player = player;
+    this.obstacles = [];
+    this.pulps = [];
+    this.interval = null;
+    this.isRunning = false;
+    this.squares = [];
+    this.score = 0;
+    this.layout = [
+      1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+      1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1,
+      1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0,
+      1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0,
+      1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0,
+      1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1,
+      1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1,
+      1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+      1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1,
+      1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1,
+      1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1,
+      1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1,
+      1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+      1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1,
+      1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1,
+      1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1,
+      0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1,
+      1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1,
+      1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1,
+      0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0,
+      0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1,
+      1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1,
+      1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+      1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+      1, 1, 1, 1, 1, 1, 1, 1, 1,
+    ];
+  }
 
-start = () => {
-  this.createBoard()
-    this.interval = setInterval(this.updateGameArea, 20)
+  start = () => {
+    this.obstacles.push(new Component(20, 20, 'green', 20, 100, this.ctx, "./docs/assets/images/TomCbesh.png"));
+    this.obstacles.push(
+      new Component(
+        20,
+        20,
+        "purple",
+        520,
+        20,
+        this.ctx,
+        "./docs/assets/images/TomCbesh.png"
+      )
+    );
+    this.obstacles.push(new Component(20, 20, 'orange', 20, 520, this.ctx, "./docs/assets/images/TomCbesh.png"));
+    this.obstacles.push(new Component(20, 20, 'pink', 20, 20, this.ctx, "./docs/assets/images/TomCbesh.png"));
+    this.obstacles.push(new Component(20, 20, 'grey', 420, 20, this.ctx, "./docs/assets/images/TomCbesh.png"));
+    this.obstacles.push(new Component(20, 20, 'maroon', 120, 20, this.ctx, "./docs/assets/images/TomCbesh.png"));
+    this.obstacles.push(new Component(20, 20, 'aqua', 20, 340, this.ctx, "./docs/assets/images/TomCbesh.png"));
+    this.createBoard();
+    this.interval = setInterval(this.updateGameArea, 20);
     this.isRunning = true;
-}
-reset = () => {
+  };
+  reset = () => {
     this.player.x = 260;
     this.player.y = 340;
     this.frames = 0;
     this.obstacles = [];
+    this.layout = [];
     this.start();
-};
+  };
 
-clear(){
-    this.ctx.clearRect(0, 0, this.width, this.height)
-}
-
-    stop() {
-        clearInterval(this.interval);
-        this.isRunning = false;
-    }
-
-    createBoard = () => {
-      for (let i = 0; i < this.layout.length; i++) {
-        if(this.layout[i] === 0) {
-          this.squares.push({x: (0 + i * 20) % 560 , y: Math.floor(i/28) * 20, color: 'blue', type: 'cheese'} )
-        } else if (this.layout[i] === 1) {
-          this.squares.push({x: (0 + i * 20) % 560 , y: Math.floor(i/28) * 20, color: 'black', type: 'wall'} )
-        } else if (this.layout[i] === 2) {
-          this.squares.push({x: (0 + i * 20) % 560 , y: Math.floor(i/28) * 20, color: 'red', type: 'cat-lair'} )
-        } else if (this.layout[i] === 3) {
-          this.squares.push({x: (0 + i * 20) % 560 , y: Math.floor(i/28) * 20, color: 'yellow', type: 'powerup'} )
-        }
-      }
-    }
-
-updateObstacles() {
-    for (let i = 0; i < this.obstacles.length; i++ ) {
-    this.obstacles[i].y += 1; 
-    this.obstacles[i].draw();
-}
-   
-    if(this.frames % 60 === 0){
-        this.frames++;
-    this.obstacles.push(new Component(20, 20, 'green', 100, 100, this.ctx));
-    this.obstacles.push(new Component(20, 20, 'purple', 500, 0, this.ctx));
-    this.obstacles.push(new Component(20, 20, 'orange', 270, 275, this.ctx));}
-
+  clear() {
+    this.ctx.clearRect(0, 0, this.width, this.height);
   }
 
-/*   updatePulps () {
+  stop() {
+    clearInterval(this.interval);
+    this.isRunning = false;
+  }
+
+  createBoard = () => {
+    for (let i = 0; i < this.layout.length; i++) {
+      if (this.layout[i] === 0) {
+        this.squares.push({
+          x: (0 + i * 20) % 560,
+          y: Math.floor(i / 28) * 20,
+          color: "blue",
+          type: "cheese",
+        });
+      } else if (this.layout[i] === 1) {
+        this.squares.push({
+          x: (0 + i * 20) % 560,
+          y: Math.floor(i / 28) * 20,
+          color: "black",
+          type: "wall",
+        });
+      }
+    }
+  };
+
+  updateObstacles() {
+    this.frames++;
+    for (let i = 0; i < this.obstacles.length; i++) {
+      this.obstacles[i].draw();
+      this.obstacles[i].moveEnemies();
+    }
+  }
+
+  /*   updatePulps () {
     if (squares[playerCurrentIndex].el.contains('pulps')) {
         score++
         scoreDisplay.innerHTML = score
@@ -102,49 +123,47 @@ updateObstacles() {
       }
   } */
 
-drawGameBoard() {
-  this.squares.forEach((square) => {
+  drawGameBoard() {
+    this.squares.forEach((square) => {
+      if (square.type === "cheese") {
+        this.ctx.fillStyle = square.color;
+        this.ctx.fillRect(square.x, square.y, 20, 20);
+        ctx.fillStyle = "yellow";
+        this.ctx.fillRect(square.x + 5, square.y + 5, 10, 10);
+      } else {
+        this.ctx.fillStyle = square.color;
+        ctx.fillRect(square.x, square.y, 20, 20);
+      }
+    });
+  }
 
-    if(square.type === 'cheese') {
-      this.ctx.fillStyle = square.color
-      this.ctx.fillRect(square.x, square.y, 20, 20);
-      ctx.fillStyle = 'yellow'
-      this.ctx.fillRect(square.x +5, square.y + 5, 10, 10)
-    } else {
-      this.ctx.fillStyle = square.color
-      ctx.fillRect(square.x, square.y, 20, 20)
-    }
-  
-  })
-}
-
-checkGameOver = () => {
+  checkGameOver = () => {
     const crashedEnemies = this.obstacles.some((enemy) => {
       return this.player.crashWithEnemy(enemy);
     });
     if (crashedEnemies) {
       this.stop();
     }
-}
+  };
 
- checkForWin() {
-    if (!this.squares.find((square) => square.type === 'cheese')) {
-      alert('You won!')
+  checkForWin() {
+    if (!this.squares.find((square) => square.type === "cheese")) {
+      alert("You won!");
     }
   }
 
-updateGameArea = () => {
+  updateGameArea = () => {
     this.clear();
     this.drawGameBoard();
     this.updateObstacles();
     this.checkGameOver();
     this.player.newPos();
-    this.player.draw()
-    if(this.player.eatCheese(this.squares)) {
-      this.score++
-      const scoreSpan = document.getElementById('score')
-      scoreSpan.innerHTML = this.score
+    this.player.draw();
+    if (this.player.eatCheese(this.squares)) {
+      this.score++;
+      const scoreSpan = document.getElementById("score");
+      scoreSpan.innerHTML = this.score;
     }
-    this.checkForWin()
-}
+    this.checkForWin();
+  };
 }

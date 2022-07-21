@@ -59,7 +59,15 @@ squares.forEach((square) => {
   ctx.fillRect(square.x, square.y, 20, 20)
 })
  */
-const player = new Component(20, 20, 'white', 260, 340, ctx);
+const player = new Component(
+  20,
+  20,
+  "white",
+  260,
+  340,
+  ctx,
+  "./docs/assets/images/Player1.png"
+);
 
 /* let game = new Game(ctx, canvas.width, canvas.height, player)
 game.start() */
