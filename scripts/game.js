@@ -48,7 +48,7 @@ class Game {
   }
 
   start = () => {
-    this.obstacles.push(new Component(20, 20, 'green', 20, 100, this.ctx, "./docs/assets/images/TomCbesh.png"));
+    this.obstacles.push(new Component(20, 20, 'green', 20, 100, this.ctx, "./docs/assets/images/Tommy2.png"));
     this.obstacles.push(
       new Component(
         20,
@@ -57,14 +57,14 @@ class Game {
         520,
         20,
         this.ctx,
-        "./docs/assets/images/TomCbesh.png"
+        "./docs/assets/images/Tommy2.png"
       )
     );
-    this.obstacles.push(new Component(20, 20, 'orange', 20, 520, this.ctx, "./docs/assets/images/TomCbesh.png"));
-    this.obstacles.push(new Component(20, 20, 'pink', 20, 20, this.ctx, "./docs/assets/images/TomCbesh.png"));
-    this.obstacles.push(new Component(20, 20, 'grey', 420, 20, this.ctx, "./docs/assets/images/TomCbesh.png"));
-    this.obstacles.push(new Component(20, 20, 'maroon', 120, 20, this.ctx, "./docs/assets/images/TomCbesh.png"));
-    this.obstacles.push(new Component(20, 20, 'aqua', 20, 340, this.ctx, "./docs/assets/images/TomCbesh.png"));
+    this.obstacles.push(new Component(20, 20, 'orange', 20, 520, this.ctx, "./docs/assets/images/Tommy2.png"));
+    this.obstacles.push(new Component(20, 20, 'pink', 20, 20, this.ctx, "./docs/assets/images/Tommy2.png"));
+    this.obstacles.push(new Component(20, 20, 'grey', 420, 20, this.ctx, "./docs/assets/images/Tommy2.png"));
+    this.obstacles.push(new Component(20, 20, 'maroon', 120, 20, this.ctx, "./docs/assets/images/Tommy2.png"));
+    this.obstacles.push(new Component(20, 20, 'aqua', 20, 340, this.ctx, "./docs/assets/images/Tommy2.png"));
     this.createBoard();
     this.interval = setInterval(this.updateGameArea, 20);
     this.isRunning = true;

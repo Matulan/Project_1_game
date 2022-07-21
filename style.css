@@ -1,7 +1,7 @@
 
 
-body {background-image: url(./docs/assets/images/frontpicture.jpg)}
-h1 {color: red;}
+body {background-image: url(./docs/assets/images/back.jpg)}
+
 h2 {color:aquamarine;}
 
 
@@ -11,11 +11,12 @@ h2 {color:aquamarine;}
         flex-wrap: nowrap;
         justify-content: center;
         align-items: center;
-        align-content: stretch;
+        align-content: ;
+        
 }
 #myCanvas {
-        background-image: url('./docs/assets/images/60916d7ad7bedcabf114c4e5_Pic_5.jpg');
+        background-image: url('./docs/assets/images/front.jpg');
         background-repeat: no-repeat;
-        background-size: cover;
-        border: 2px solid black;
+        background-size: 560px 560px;
+        border: 2px solid orange;
 }

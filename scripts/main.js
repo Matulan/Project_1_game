@@ -60,13 +60,13 @@ squares.forEach((square) => {
 })
  */
 const player = new Component(
-  20,
-  20,
+  18,
+  18,
   "white",
   260,
   340,
   ctx,
-  "./docs/assets/images/Player1.png"
+  "./docs/assets/images/Jeery 2.png"
 );
 
 /* let game = new Game(ctx, canvas.width, canvas.height, player)
