@@ -93,7 +93,7 @@ class Game {
         this.squares.push({
           x: (0 + i * 20) % 560,
           y: Math.floor(i / 28) * 20,
-          color: "blue",
+          color: "yellow",
           type: "cheese",
         });
       } else if (this.layout[i] === 1) {
@@ -128,7 +128,7 @@ class Game {
       if (square.type === "cheese") {
         this.ctx.fillStyle = square.color;
         this.ctx.fillRect(square.x, square.y, 20, 20);
-        ctx.fillStyle = "yellow";
+        ctx.fillStyle = "red";
         this.ctx.fillRect(square.x + 5, square.y + 5, 10, 10);
       } else {
         this.ctx.fillStyle = square.color;
