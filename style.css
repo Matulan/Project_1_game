@@ -1,0 +1,21 @@
+
+
+body {background-image: url(./docs/assets/images/frontpicture.jpg)}
+h1 {color: red;}
+h2 {color:aquamarine;}
+
+
+#container{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        align-content: stretch;
+}
+#myCanvas {
+        background-image: url('./docs/assets/images/60916d7ad7bedcabf114c4e5_Pic_5.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: 2px solid black;
+}
