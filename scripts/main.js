@@ -60,8 +60,8 @@ squares.forEach((square) => {
 })
  */
 const player = new Component(
-  18,
-  18,
+  20,
+  20,
   "white",
   260,
   340,

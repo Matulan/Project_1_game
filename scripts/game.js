@@ -74,7 +74,7 @@ class Game {
     this.player.y = 340;
     this.frames = 0;
     this.obstacles = [];
-    this.layout = [];
+    this.squares = [];
     this.start();
   };
 

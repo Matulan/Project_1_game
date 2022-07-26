@@ -63,10 +63,10 @@ class Component {
   }
   crashWithEnemy(enemy) {
     return !(
-      this.bottom() < enemy.y ||
-      this.top() > enemy.y + 20 ||
-      this.right() < enemy.x ||
-      this.left() > enemy.x + 20
+      this.bottom() -1 < enemy.y ||
+      this.top() > enemy.y + 19 ||
+      this.right() -1 < enemy.x ||
+      this.left() > enemy.x + 19
     );
   }
 
