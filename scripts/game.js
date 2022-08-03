@@ -7,6 +7,12 @@ class Game {
     this.player = player;
     this.obstacles = [];
     this.pulps = [];
+    this.img = new Image();
+    this.img.addEventListener("load", () => {})
+    this.img.src = "./docs/assets/images/ost4.png";
+    this.sound = new Audio();
+    this.sound.addEventListener("load", () => {})
+    this.sound.src = "./docs/assets/images/tomandjerrysong.mp3";
     this.interval = null;
     this.isRunning = false;
     this.squares = [];
@@ -68,6 +74,7 @@ class Game {
     this.createBoard();
     this.interval = setInterval(this.updateGameArea, 20);
     this.isRunning = true;
+    this.sound.play();
   };
   reset = () => {
     this.player.x = 260;
@@ -85,6 +92,7 @@ class Game {
   stop() {
     clearInterval(this.interval);
     this.isRunning = false;
+    this.sound.pause();
   }
 
   createBoard = () => {
@@ -128,8 +136,7 @@ class Game {
       if (square.type === "cheese") {
         this.ctx.fillStyle = square.color;
         this.ctx.fillRect(square.x, square.y, 20, 20);
-        ctx.fillStyle = "yellow";
-        this.ctx.fillRect(square.x + 5, square.y + 5, 10, 10);
+        this.ctx.drawImage(this.img, square.x + 2, square.y + 2, 15, 15)
       } else {
         this.ctx.fillStyle = square.color;
         ctx.fillRect(square.x, square.y, 20, 20);
